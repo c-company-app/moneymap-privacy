@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoneyMap · ช่วยเหลือ / Support</title>
+<meta name="description" content="ศูนย์ช่วยเหลือ MoneyMap — คำถามที่พบบ่อยและวิธีติดต่อ · MoneyMap help center: FAQ and how to get in touch.">
+<style>
+  :root{
+    --teal:#0D9488; --teal-deep:#0F766E; --mint:#5EEAD4;
+    --bg:#FBFCFB; --surface:#FFFFFF; --ink:#0B211E; --muted:#5B726C; --border:#E2ECE9; --chip:#EAF6F3;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","IBM Plex Sans Thai",Roboto,"Helvetica Neue",Arial,"Noto Sans Thai",sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#06110F; --surface:#0E1C19; --ink:#E9F4F0; --muted:#93AFA8; --border:rgba(94,234,212,.14); --chip:#0F231F;
+  }}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:clamp(24px,5vw,44px) clamp(20px,5vw,32px) 80px}
+
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--border)}
+  .wm{font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .wm .m1{color:var(--ink)} .wm .m2{color:var(--teal)}
+  .toggle{display:inline-flex;border:1px solid var(--border);border-radius:999px;padding:3px;background:var(--surface)}
+  .toggle button{border:none;background:transparent;color:var(--muted);font-family:inherit;font-weight:700;font-size:14px;padding:6px 16px;border-radius:999px;cursor:pointer}
+  .toggle button.on{background:var(--teal);color:#fff}
+
+  .hero{text-align:center;padding:clamp(32px,7vw,60px) 0 12px}
+  .hero .icon{width:112px;height:112px;border-radius:25%;margin:0 auto 22px;display:grid;place-items:center;
+    background:radial-gradient(120% 130% at 30% 12%,#15AB9C,var(--teal) 48%,var(--teal-deep));box-shadow:0 14px 34px rgba(13,148,136,.3)}
+  .hero .icon b{font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:.86;text-align:center}
+  .hero .icon .l1{display:block;color:#fff}.hero .icon .l2{display:block;color:var(--mint)}
+  .hero h1{font-size:clamp(28px,5.5vw,40px);font-weight:800;letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
+  .hero p{color:var(--muted);font-size:clamp(16px,2.6vw,19px);margin:0 auto;max-width:48ch}
+  .badge{display:inline-flex;align-items:center;gap:9px;margin-top:26px;background:var(--ink);color:var(--bg);
+    border-radius:14px;padding:13px 22px;font-weight:700;font-size:16px}
+  @media (prefers-color-scheme:dark){.badge{background:var(--mint);color:#04211c}}
+  .badge small{font-weight:500;opacity:.7;font-size:12px;display:block;line-height:1}
+
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:44px 0}
+  .feat{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+  .feat b{display:block;font-size:16px;margin-bottom:3px}
+  .feat span{color:var(--muted);font-size:14px;line-height:1.5}
+
+  h2{font-size:22px;font-weight:800;letter-spacing:-.01em;margin:44px 0 6px}
+  details{border:1px solid var(--border);border-radius:14px;background:var(--surface);margin-top:12px;overflow:hidden}
+  details summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:16.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+";color:var(--teal);font-weight:800;font-size:22px;transition:.15s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details .a{padding:0 22px 20px;color:var(--muted);line-height:1.65}
+  details .a a{color:var(--teal-deep);font-weight:600}
+  @media (prefers-color-scheme:dark){details .a a{color:var(--mint)}}
+
+  .contact{margin-top:44px;background:var(--chip);border:1px solid var(--border);border-radius:18px;padding:26px 24px;text-align:center}
+  .contact h3{margin:0 0 6px;font-size:19px;font-weight:800}
+  .contact p{margin:0 0 16px;color:var(--muted)}
+  .contact a.btn{display:inline-block;background:var(--teal);color:#fff;font-weight:700;text-decoration:none;border-radius:12px;padding:13px 26px}
+  .links{margin-top:16px;font-size:14.5px}
+  .links a{color:var(--teal-deep);font-weight:600;text-decoration:none;margin:0 10px}
+  @media (prefers-color-scheme:dark){.links a{color:var(--mint)}}
+
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:13.5px;text-align:center}
+  [hidden]{display:none !important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="wm"><span class="m1">Money</span><span class="m2">Map</span></span>
+    <div class="toggle" role="tablist" aria-label="Language">
+      <button id="btn-th" class="on" onclick="setLang('th')">ไทย</button>
+      <button id="btn-en" onclick="setLang('en')">English</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="icon"><b><span class="l1">Money</span><span class="l2">Map</span></b></div>
+    <h1 id="h-title">ศูนย์ช่วยเหลือ MoneyMap</h1>
+    <p id="h-sub">แผนที่การเงินที่เป็นของคุณคนเดียว — บันทึกรายรับ-รายจ่าย เป็นส่วนตัว ข้อมูลอยู่ในเครื่องคุณเท่านั้น</p>
+    <div class="badge"><span>🍎</span><span id="h-badge">เร็ว ๆ นี้บน App Store<small>กำลังทดสอบผ่าน TestFlight</small></span></div>
+  </div>
+
+  <!-- ===== ไทย ===== -->
+  <main id="lang-th">
+    <div class="feats">
+      <div class="feat"><b>🔒 เป็นส่วนตัวจริง</b><span>ข้อมูลอยู่ในเครื่อง ไม่ผ่านเซิร์ฟเวอร์ ไม่ต้องล็อกอิน</span></div>
+      <div class="feat"><b>⚡ บันทึกเร็ว</b><span>พิมพ์ประโยคเดียว · วางสลิป · หรือแป้นตัวเลข</span></div>
+      <div class="feat"><b>🗺️ เห็นภาพทั้งเดือน</b><span>คาดการณ์สิ้นเดือน + งบต่อหมวด + net worth</span></div>
+      <div class="feat"><b>📤 ข้อมูลเป็นของคุณ</b><span>ส่งออก CSV / สำรองเข้ารหัส / sync Google Sheet ได้</span></div>
+    </div>
+
+    <h2>คำถามที่พบบ่อย</h2>
+    <details open><summary>ข้อมูลของฉันปลอดภัยไหม? เก็บไว้ที่ไหน</summary><div class="a">ข้อมูลทั้งหมดเก็บอยู่ใน “เครื่องของคุณเท่านั้น” MoneyMap ไม่มีเซิร์ฟเวอร์และไม่ส่งข้อมูลออกจากเครื่องเอง ไม่มีระบบวิเคราะห์พฤติกรรม ไม่มีโฆษณา ไม่มีการติดตาม อ่านเพิ่มเติมได้ที่ <a href="./">นโยบายความเป็นส่วนตัว</a></div></details>
+    <details><summary>ต้องสมัครหรือล็อกอินไหม</summary><div class="a">ไม่ต้องเลย เปิดแอปแล้วเริ่มใช้ได้ทันที เราไม่มีระบบบัญชีผู้ใช้ในตัวแอป</div></details>
+    <details><summary>ย้ายข้อมูลไปเครื่องใหม่ หรือสำรองข้อมูลยังไง</summary><div class="a">ไปที่ ตั้งค่า → ส่งออก/สำรอง → “สำรองแบบเข้ารหัส” เพื่อสร้างไฟล์สำรอง แล้วนำไฟล์นั้นไป “กู้คืน” ในเครื่องใหม่ · หรือส่งออกเป็น CSV เพื่อเปิดใน Excel/Google Sheets</div></details>
+    <details><summary>ฟีเจอร์ Sync ขึ้น Google Sheet ทำงานยังไง</summary><div class="a">เป็นฟีเจอร์เสริมที่คุณเลือกเปิดเอง เมื่อกด Sync แอปจะขอให้เข้าสู่ระบบ Google (เฉพาะตอนนั้น) แล้วเขียนข้อมูลลง Google Sheet ในบัญชี Google ของคุณเอง โดยขอสิทธิ์เฉพาะไฟล์ที่แอปสร้าง — ไม่ผ่านเซิร์ฟเวอร์ของเรา และปิดไว้เป็นค่าเริ่มต้น</div></details>
+    <details><summary>ลืมรหัสผ่านของไฟล์สำรองเข้ารหัส ทำยังไง</summary><div class="a">เนื่องจากไฟล์เข้ารหัสด้วยรหัสของคุณเองและเราไม่มีเซิร์ฟเวอร์เก็บรหัส หากลืมรหัสจะไม่สามารถกู้ไฟล์นั้นได้ กรุณาเก็บรหัสไว้ในที่ปลอดภัย</div></details>
+    <details><summary>แอปใช้ฟรีไหม รองรับภาษาอะไร</summary><div class="a">ใช้งานได้ฟรี รองรับสองภาษา ไทย/English และมีธีมสว่าง-มืด ใช้งานออฟไลน์ได้เต็มรูปแบบ</div></details>
+    <details><summary>ล็อกแอปด้วย Face ID ได้ไหม</summary><div class="a">ได้ ไปที่ ตั้งค่า → ความปลอดภัย เพื่อเปิดล็อกแอปด้วย Face ID / Touch ID / รหัสของเครื่อง</div></details>
+
+    <div class="contact">
+      <h3>ยังไม่พบคำตอบ?</h3>
+      <p>ติดต่อผู้พัฒนาได้โดยตรง เรายินดีช่วยเหลือและรับฟังทุกความคิดเห็น</p>
+      <a class="btn" href="mailto:kritchai.w@gmail.com?subject=MoneyMap%20Support">ส่งอีเมลถึงเรา</a>
+      <div class="links"><a href="./">นโยบายความเป็นส่วนตัว</a></div>
+    </div>
+  </main>
+
+  <!-- ===== English ===== -->
+  <main id="lang-en" hidden>
+    <div class="feats">
+      <div class="feat"><b>🔒 Truly private</b><span>Data stays on your device · no server · no login</span></div>
+      <div class="feat"><b>⚡ Log in seconds</b><span>One sentence · paste a slip · or the number pad</span></div>
+      <div class="feat"><b>🗺️ See the whole month</b><span>End-of-month forecast + budgets + net worth</span></div>
+      <div class="feat"><b>📤 Your data is yours</b><span>Export CSV / encrypted backup / sync to Google Sheet</span></div>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+    <details open><summary>Is my data safe? Where is it stored?</summary><div class="a">All data is stored on “your device only.” MoneyMap has no server and doesn’t send data off your device on its own — no behavioural analytics, no ads, no tracking. Read more in our <a href="./">Privacy Policy</a>.</div></details>
+    <details><summary>Do I need to sign up or log in?</summary><div class="a">No. Just open the app and start — there are no user accounts inside the app.</div></details>
+    <details><summary>How do I back up or move my data to a new phone?</summary><div class="a">Go to Settings → Export/Backup → “Encrypted backup” to create a backup file, then “Restore” it on the new device · or export a CSV to open in Excel/Google Sheets.</div></details>
+    <details><summary>How does Sync to Google Sheet work?</summary><div class="a">It’s optional and off by default. When you tap Sync, the app asks you to sign in with Google (only then) and writes your records to a Google Sheet in your own Google account, requesting access only to the file the app creates — never through our server.</div></details>
+    <details><summary>I forgot my encrypted backup passphrase. What now?</summary><div class="a">Because the file is encrypted with your own passphrase and we have no server storing it, a forgotten passphrase means the file can’t be recovered. Please keep it somewhere safe.</div></details>
+    <details><summary>Is the app free? What languages are supported?</summary><div class="a">It’s free. It supports Thai and English, has light and dark themes, and works fully offline.</div></details>
+    <details><summary>Can I lock the app with Face ID?</summary><div class="a">Yes — go to Settings → Security to enable app lock with Face ID / Touch ID / your device passcode.</div></details>
+
+    <div class="contact">
+      <h3>Still stuck?</h3>
+      <p>Reach the developer directly — we’re happy to help and hear your feedback.</p>
+      <a class="btn" href="mailto:kritchai.w@gmail.com?subject=MoneyMap%20Support">Email us</a>
+      <div class="links"><a href="./">Privacy Policy</a></div>
+    </div>
+  </main>
+
+  <footer>© 2026 C-Company · MoneyMap — <span id="foot">ข้อมูลของคุณ อยู่ในเครื่องของคุณ</span></footer>
+</div>
+
+<script>
+  function setLang(l){
+    var th = l === 'th';
+    document.getElementById('lang-th').hidden = !th;
+    document.getElementById('lang-en').hidden = th;
+    document.getElementById('btn-th').classList.toggle('on', th);
+    document.getElementById('btn-en').classList.toggle('on', !th);
+    document.getElementById('h-title').textContent = th ? 'ศูนย์ช่วยเหลือ MoneyMap' : 'MoneyMap Help Center';
+    document.getElementById('h-sub').textContent = th
+      ? 'แผนที่การเงินที่เป็นของคุณคนเดียว — บันทึกรายรับ-รายจ่าย เป็นส่วนตัว ข้อมูลอยู่ในเครื่องคุณเท่านั้น'
+      : 'A money map that’s yours alone — a private income & expense tracker; your data stays on your device only.';
+    document.getElementById('h-badge').innerHTML = (th ? 'เร็ว ๆ นี้บน App Store' : 'Coming soon to the App Store')
+      + '<small>' + (th ? 'กำลังทดสอบผ่าน TestFlight' : 'Now testing via TestFlight') + '</small>';
+    document.getElementById('foot').textContent = th ? 'ข้อมูลของคุณ อยู่ในเครื่องของคุณ' : 'your data, on your device';
+    document.documentElement.lang = l;
+  }
+  if ((navigator.language || 'th').slice(0,2) !== 'th') setLang('en');
+</script>
+</body>
+</html>
