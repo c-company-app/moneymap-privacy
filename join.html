@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoneyMap · สมัครเป็นผู้ทดสอบ (Beta)</title>
+<meta name="description" content="ร่วมทดสอบ MoneyMap — แอปบันทึกรายรับ-รายจ่ายที่เป็นส่วนตัวจริง ข้อมูลอยู่ในเครื่องคุณ ไม่ต้องล็อกอิน">
+<style>
+  :root{
+    --teal:#0D9488; --teal-deep:#0F766E; --mint:#5EEAD4; --ink:#0B211E;
+    --bg:#FBFCFB; --surface:#FFFFFF; --muted:#5B726C; --border:#E2ECE9; --chip:#EAF6F3;
+    --income:#16A34A; --expense:#E11D48;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","IBM Plex Sans Thai",Roboto,"Helvetica Neue",Arial,"Noto Sans Thai",sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#06110F; --surface:#0E1C19; --ink:#E9F4F0; --muted:#93AFA8; --border:rgba(94,234,212,.14); --chip:#0F231F;
+  }}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:clamp(24px,5vw,44px) clamp(20px,5vw,32px) 80px}
+  header{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--border)}
+  .wm{font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .wm .m1{color:var(--ink)} .wm .m2{color:var(--teal)}
+  .beta{background:var(--ink);color:var(--bg);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700}
+  @media (prefers-color-scheme:dark){.beta{background:var(--mint);color:#04211c}}
+
+  .hero{text-align:center;padding:clamp(30px,6vw,52px) 0 8px}
+  .hero .icon{width:104px;height:104px;border-radius:25%;margin:0 auto 22px;display:grid;place-items:center;
+    background:radial-gradient(120% 130% at 30% 12%,#15AB9C,var(--teal) 48%,var(--teal-deep));box-shadow:0 14px 34px rgba(13,148,136,.3)}
+  .hero .icon b{font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:.86;text-align:center}
+  .hero .icon .l1{display:block;color:#fff}.hero .icon .l2{display:block;color:var(--mint)}
+  .hero h1{font-size:clamp(28px,5.5vw,40px);font-weight:800;letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
+  .hero p{color:var(--muted);font-size:clamp(16px,2.6vw,19px);margin:0 auto;max-width:46ch}
+
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:40px 0}
+  .feat{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+  .feat b{display:block;font-size:16px;margin-bottom:3px}
+  .feat span{color:var(--muted);font-size:14px;line-height:1.5}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:clamp(24px,5vw,34px);margin-top:28px}
+  .card h2{font-size:22px;font-weight:800;margin:0 0 6px}
+  .card .lead{color:var(--muted);margin:0 0 22px;font-size:15.5px}
+  label.fld{display:block;font-weight:700;font-size:15px;margin:18px 0 8px}
+  input[type=email]{width:100%;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;font-family:inherit;font-size:16px;background:var(--bg);color:var(--ink)}
+  input[type=email]:focus{outline:none;border-color:var(--teal)}
+  .seg{display:flex;gap:10px;margin-top:4px}
+  .seg label{flex:1;border:1.5px solid var(--border);border-radius:12px;padding:13px;text-align:center;cursor:pointer;font-weight:600;color:var(--muted);font-size:15px}
+  .seg input{display:none}
+  .seg input:checked + span{color:var(--teal)}
+  .seg label:has(input:checked){border-color:var(--teal);background:var(--chip);color:var(--teal)}
+  .consent{display:flex;gap:12px;align-items:flex-start;margin-top:18px;font-size:14.5px;color:var(--muted);line-height:1.55}
+  .consent input{margin-top:4px;width:20px;height:20px;accent-color:var(--teal);flex:none}
+  .consent a{color:var(--teal-deep);font-weight:600}
+  @media (prefers-color-scheme:dark){.consent a{color:var(--mint)}}
+  button.submit{width:100%;margin-top:26px;background:var(--teal);color:#fff;border:none;border-radius:14px;padding:16px;font-family:inherit;font-weight:800;font-size:17px;cursor:pointer}
+  button.submit:disabled{opacity:.55;cursor:not-allowed}
+  .msg{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:15px;font-weight:600;display:none}
+  .msg.ok{display:block;background:color-mix(in srgb,var(--income) 12%,transparent);color:var(--income);border:1px solid color-mix(in srgb,var(--income) 30%,transparent)}
+  .msg.err{display:block;background:color-mix(in srgb,var(--expense) 10%,transparent);color:var(--expense);border:1px solid color-mix(in srgb,var(--expense) 30%,transparent)}
+  .note{color:var(--muted);font-size:13px;margin-top:14px;line-height:1.5}
+  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:13.5px;text-align:center}
+  footer a{color:var(--teal-deep);font-weight:600;margin:0 8px}
+  @media (prefers-color-scheme:dark){footer a{color:var(--mint)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="wm"><span class="m1">Money</span><span class="m2">Map</span></span>
+    <span class="beta">BETA</span>
+  </header>
+
+  <div class="hero">
+    <div class="icon"><b><span class="l1">Money</span><span class="l2">Map</span></b></div>
+    <h1>ร่วมทดสอบ MoneyMap</h1>
+    <p>แอปบันทึกรายรับ-รายจ่ายที่เป็นส่วนตัวจริง — ข้อมูลอยู่ในเครื่องคุณเท่านั้น ไม่ต้องล็อกอิน · มาช่วยลองใช้ก่อนใคร!</p>
+  </div>
+
+  <div class="feats">
+    <div class="feat"><b>🔒 เป็นส่วนตัวจริง</b><span>ข้อมูลอยู่ในเครื่อง ไม่ผ่านเซิร์ฟเวอร์ ไม่มีการติดตาม</span></div>
+    <div class="feat"><b>⚡ บันทึกใน 3 วิ</b><span>พิมพ์ประโยคเดียว · วางสลิป · หรือแป้นตัวเลข</span></div>
+    <div class="feat"><b>🗺️ เห็นภาพทั้งเดือน</b><span>คาดการณ์สิ้นเดือน + งบต่อหมวด + net worth</span></div>
+    <div class="feat"><b>🔐 ปลอดภัย</b><span>ล็อก Face ID · สำรองเข้ารหัส · sync Google Sheet</span></div>
+  </div>
+
+  <div class="card" id="formCard">
+    <h2>สมัครเป็นผู้ทดสอบ</h2>
+    <p class="lead">กรอกอีเมลแล้วเราจะเพิ่มคุณเข้ารายชื่อผู้ทดสอบ พร้อมส่งลิงก์ติดตั้งให้</p>
+
+    <form id="joinForm" novalidate>
+      <label class="fld" for="email">อีเมล (Google/Gmail สำหรับ Android · หรือ Apple ID สำหรับ iOS)</label>
+      <input type="email" id="email" name="email" placeholder="you@gmail.com" autocomplete="email" required>
+
+      <label class="fld">อุปกรณ์ที่จะใช้ทดสอบ</label>
+      <div class="seg">
+        <label><input type="radio" name="platform" value="Android" checked><span>🤖 Android</span></label>
+        <label><input type="radio" name="platform" value="iOS"><span>🍎 iOS (iPhone)</span></label>
+      </div>
+
+      <div class="consent">
+        <input type="checkbox" id="c1" required>
+        <label for="c1">ข้าพเจ้ายินยอมให้เก็บ “อีเมล” เพื่อใช้เพิ่มเข้ารายชื่อผู้ทดสอบและติดต่อเรื่องการทดสอบเท่านั้น ตาม พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล (PDPA) และสามารถขอลบได้ทุกเมื่อ</label>
+      </div>
+      <div class="consent">
+        <input type="checkbox" id="c2" required>
+        <label for="c2">ข้าพเจ้าได้อ่านและยอมรับ <a href="./" target="_blank">นโยบายความเป็นส่วนตัว</a> และ <a href="./terms.html" target="_blank">ข้อกำหนดการใช้งาน</a></label>
+      </div>
+
+      <button type="submit" class="submit" id="submitBtn">สมัครเป็นผู้ทดสอบ</button>
+      <div class="msg" id="msg"></div>
+      <p class="note">เราเก็บเฉพาะอีเมลที่คุณกรอก ไว้ในสเปรดชีตส่วนตัวของผู้พัฒนาเพื่อจัดการรายชื่อผู้ทดสอบเท่านั้น · ไม่แชร์ให้บุคคลที่สาม</p>
+    </form>
+  </div>
+
+  <footer>
+    © 2026 C-Company · MoneyMap · <a href="./">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./support.html">Support</a>
+  </footer>
+</div>
+
+<script>
+  // ⬇️ ใส่ URL /exec ของ Google Apps Script Web App ที่ deploy (ดูขั้นตอนที่ผู้พัฒนาให้มา)
+  var ENDPOINT = "REPLACE_WITH_APPS_SCRIPT_EXEC_URL";
+
+  var form = document.getElementById('joinForm');
+  var btn = document.getElementById('submitBtn');
+  var msg = document.getElementById('msg');
+
+  function show(kind, text){ msg.className = 'msg ' + kind; msg.textContent = text; }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'msg';
+    var email = document.getElementById('email').value.trim();
+    var platform = (document.querySelector('input[name=platform]:checked')||{}).value || 'Android';
+    var c1 = document.getElementById('c1').checked;
+    var c2 = document.getElementById('c2').checked;
+
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ show('err','กรุณากรอกอีเมลให้ถูกต้อง'); return; }
+    if(!c1 || !c2){ show('err','กรุณาติ๊กยอมรับเงื่อนไขทั้ง 2 ข้อ'); return; }
+    if(ENDPOINT.indexOf('REPLACE_WITH') === 0){ show('err','ยังไม่ได้ตั้งค่าปลายทาง (ผู้พัฒนายังไม่ใส่ URL)'); return; }
+
+    btn.disabled = true; btn.textContent = 'กำลังส่ง…';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      // text/plain = simple request → ไม่มี CORS preflight กับ Apps Script
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ email: email, platform: platform, consent: true })
+    })
+    .then(function(r){ return r.json().catch(function(){ return { ok:false }; }); })
+    .then(function(res){
+      if(res && res.ok){
+        form.style.display = 'none';
+        document.querySelector('#formCard h2').textContent = '🎉 สมัครสำเร็จ!';
+        document.querySelector('#formCard .lead').textContent = 'ขอบคุณที่ร่วมทดสอบ MoneyMap — เราจะเพิ่มอีเมลของคุณเข้ารายชื่อผู้ทดสอบและส่งลิงก์ติดตั้งให้เร็ว ๆ นี้ 🙏';
+      } else {
+        show('err', (res && res.error) ? res.error : 'ส่งไม่สำเร็จ ลองใหม่อีกครั้ง'); btn.disabled = false; btn.textContent = 'สมัครเป็นผู้ทดสอบ';
+      }
+    })
+    .catch(function(){ show('err','เชื่อมต่อไม่ได้ ลองใหม่อีกครั้ง'); btn.disabled = false; btn.textContent = 'สมัครเป็นผู้ทดสอบ'; });
+  });
+</script>
+</body>
+</html>
