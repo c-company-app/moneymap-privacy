@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MoneyMap · สมัครเป็นผู้ทดสอบ (Beta)</title>
 <meta name="description" content="ร่วมทดสอบ MoneyMap — แอปบันทึกรายรับ-รายจ่ายที่เป็นส่วนตัวจริง ข้อมูลอยู่ในเครื่องคุณ ไม่ต้องล็อกอิน">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <style>
   :root{
     --teal:#0D9488; --teal-deep:#0F766E; --mint:#5EEAD4; --ink:#0B211E;
@@ -37,6 +38,8 @@
   .feat{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
   .feat b{display:block;font-size:16px;margin-bottom:3px}
   .feat span{color:var(--muted);font-size:14px;line-height:1.5}
+  .feat b i{color:var(--teal);margin-right:8px;width:1.05em;display:inline-block;text-align:center}
+  .tag i{margin-right:7px}
 
   .card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:clamp(24px,5vw,34px);margin-top:28px}
   .card h2{font-size:22px;font-weight:800;margin:0 0 6px}
@@ -81,21 +84,21 @@
   </div>
 
   <div class="feats">
-    <div class="feat"><b>🔒 เป็นส่วนตัวจริง</b><span>ข้อมูลอยู่ในเครื่อง ไม่ผ่านเซิร์ฟเวอร์ ไม่มีการติดตาม</span></div>
-    <div class="feat"><b>⚡ บันทึกใน 3 วิ</b><span>พิมพ์ประโยคเดียว · วางสลิป · หรือแป้นตัวเลข</span></div>
-    <div class="feat"><b>🗺️ เห็นภาพทั้งเดือน</b><span>คาดการณ์สิ้นเดือน + งบต่อหมวด + net worth</span></div>
-    <div class="feat"><b>🔐 ปลอดภัย</b><span>ล็อก Face ID · สำรองเข้ารหัส · sync Google Sheet</span></div>
+    <div class="feat"><b><i class="fa-solid fa-lock"></i>เป็นส่วนตัวจริง</b><span>ข้อมูลอยู่ในเครื่อง ไม่ผ่านเซิร์ฟเวอร์ ไม่มีการติดตาม</span></div>
+    <div class="feat"><b><i class="fa-solid fa-bolt"></i>บันทึกใน 3 วิ</b><span>พิมพ์ประโยคเดียว · วางสลิป · หรือแป้นตัวเลข</span></div>
+    <div class="feat"><b><i class="fa-solid fa-map-location-dot"></i>เห็นภาพทั้งเดือน</b><span>คาดการณ์สิ้นเดือน + งบต่อหมวด + net worth</span></div>
+    <div class="feat"><b><i class="fa-solid fa-shield-halved"></i>ปลอดภัย</b><span>ล็อก Face ID · สำรองเข้ารหัส · sync Google Sheet</span></div>
   </div>
 
   <div class="card">
-    <span class="tag">🍎 iPhone / iPad</span>
+    <span class="tag"><i class="fa-brands fa-apple"></i>iPhone / iPad</span>
     <h2>ใช้ iOS? โหลดได้ทันที</h2>
     <p class="lead">ทดสอบผ่าน TestFlight ได้เลย ไม่ต้องกรอกอีเมล — แค่กดปุ่มด้านล่าง</p>
     <a class="tf-btn" href="https://testflight.apple.com/join/A4qzr9uw" target="_blank" rel="noopener">เปิดใน TestFlight →</a>
   </div>
 
   <div class="card" id="formCard">
-    <span class="tag">🤖 Android</span>
+    <span class="tag"><i class="fa-brands fa-android"></i>Android</span>
     <h2>ใช้ Android? สมัครรับสิทธิ์ทดสอบ</h2>
     <p class="lead">กรอกอีเมล Google (Gmail) ที่ใช้ในเครื่อง แล้วเราจะเพิ่มเข้ารายชื่อผู้ทดสอบใน Play Store พร้อมส่งลิงก์ติดตั้งให้</p>
 
@@ -156,8 +159,8 @@
     .then(function(res){
       if(res && res.ok){
         form.style.display = 'none';
-        document.querySelector('#formCard h2').textContent = '🎉 สมัครสำเร็จ!';
-        document.querySelector('#formCard .lead').textContent = 'ขอบคุณที่ร่วมทดสอบ MoneyMap — เราจะเพิ่มอีเมลของคุณเข้ารายชื่อผู้ทดสอบและส่งลิงก์ติดตั้งให้เร็ว ๆ นี้ 🙏';
+        document.querySelector('#formCard h2').innerHTML = '<i class="fa-solid fa-circle-check"></i> สมัครสำเร็จ!';
+        document.querySelector('#formCard .lead').textContent = 'ขอบคุณที่ร่วมทดสอบ MoneyMap — เราจะเพิ่มอีเมลของคุณเข้ารายชื่อผู้ทดสอบและส่งลิงก์ติดตั้งให้เร็ว ๆ นี้';
       } else {
         show('err', (res && res.error) ? res.error : 'ส่งไม่สำเร็จ ลองใหม่อีกครั้ง'); btn.disabled = false; btn.textContent = 'สมัครเป็นผู้ทดสอบ';
       }
