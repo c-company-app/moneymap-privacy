@@ -55,6 +55,9 @@
   @media (prefers-color-scheme:dark){.consent a{color:var(--mint)}}
   button.submit{width:100%;margin-top:26px;background:var(--teal);color:#fff;border:none;border-radius:14px;padding:16px;font-family:inherit;font-weight:800;font-size:17px;cursor:pointer}
   button.submit:disabled{opacity:.55;cursor:not-allowed}
+  .tf-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:6px;background:var(--ink);color:var(--bg);border:none;border-radius:14px;padding:16px;font-weight:800;font-size:17px;text-decoration:none}
+  @media (prefers-color-scheme:dark){.tf-btn{background:var(--mint);color:#04211c}}
+  .card .tag{display:inline-block;font-size:13px;font-weight:700;color:var(--teal);background:var(--chip);border-radius:999px;padding:4px 12px;margin-bottom:12px}
   .msg{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:15px;font-weight:600;display:none}
   .msg.ok{display:block;background:color-mix(in srgb,var(--income) 12%,transparent);color:var(--income);border:1px solid color-mix(in srgb,var(--income) 30%,transparent)}
   .msg.err{display:block;background:color-mix(in srgb,var(--expense) 10%,transparent);color:var(--expense);border:1px solid color-mix(in srgb,var(--expense) 30%,transparent)}
@@ -84,19 +87,21 @@
     <div class="feat"><b>🔐 ปลอดภัย</b><span>ล็อก Face ID · สำรองเข้ารหัส · sync Google Sheet</span></div>
   </div>
 
+  <div class="card">
+    <span class="tag">🍎 iPhone / iPad</span>
+    <h2>ใช้ iOS? โหลดได้ทันที</h2>
+    <p class="lead">ทดสอบผ่าน TestFlight ได้เลย ไม่ต้องกรอกอีเมล — แค่กดปุ่มด้านล่าง</p>
+    <a class="tf-btn" href="https://testflight.apple.com/join/A4qzr9uw" target="_blank" rel="noopener">เปิดใน TestFlight →</a>
+  </div>
+
   <div class="card" id="formCard">
-    <h2>สมัครเป็นผู้ทดสอบ</h2>
-    <p class="lead">กรอกอีเมลแล้วเราจะเพิ่มคุณเข้ารายชื่อผู้ทดสอบ พร้อมส่งลิงก์ติดตั้งให้</p>
+    <span class="tag">🤖 Android</span>
+    <h2>ใช้ Android? สมัครรับสิทธิ์ทดสอบ</h2>
+    <p class="lead">กรอกอีเมล Google (Gmail) ที่ใช้ในเครื่อง แล้วเราจะเพิ่มเข้ารายชื่อผู้ทดสอบใน Play Store พร้อมส่งลิงก์ติดตั้งให้</p>
 
     <form id="joinForm" novalidate>
-      <label class="fld" for="email">อีเมล (Google/Gmail สำหรับ Android · หรือ Apple ID สำหรับ iOS)</label>
+      <label class="fld" for="email">อีเมล Google / Gmail (ที่ล็อกอินในเครื่อง Android)</label>
       <input type="email" id="email" name="email" placeholder="you@gmail.com" autocomplete="email" required>
-
-      <label class="fld">อุปกรณ์ที่จะใช้ทดสอบ</label>
-      <div class="seg">
-        <label><input type="radio" name="platform" value="Android" checked><span>🤖 Android</span></label>
-        <label><input type="radio" name="platform" value="iOS"><span>🍎 iOS (iPhone)</span></label>
-      </div>
 
       <div class="consent">
         <input type="checkbox" id="c1" required>
@@ -132,7 +137,7 @@
     e.preventDefault();
     msg.className = 'msg';
     var email = document.getElementById('email').value.trim();
-    var platform = (document.querySelector('input[name=platform]:checked')||{}).value || 'Android';
+    var platform = 'Android';
     var c1 = document.getElementById('c1').checked;
     var c2 = document.getElementById('c2').checked;
 
